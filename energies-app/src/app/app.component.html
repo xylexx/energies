@@ -1,12 +1,6 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    src="assets/xylex.png"
-  />
-  <span>Bienvenue sur {{ title }} </span>
-    <div class="spacer"></div>
-  <span>test</span>
+  <span>{{ title }}</span>
 </div>
 
 <div class="content" role="main">
@@ -16,24 +10,34 @@
 
     <!-- Transports -->
     <h2>Transports</h2>
-    <p>Cliquer sur un moyen de transport</p>
+    <p>Cliquer sur un moyen de transport pour le sélectionner.</p>
 
-    <input type="hidden" #test>
-
-    <div class="card" tabindex="0" [ngClass]="{'active': selectedTransport == 1}" (click)="setSelectedTransport(1)">
-      <img [src]="source1"/>    
+    <div class="card"  [ngClass]="{'active': selectedTransport == 1}" (click)="setSelectedTransport(1)">
+      <img [src]="sourceTransport1"/>    
     </div>
 
     <div class="card" [ngClass]="{'active': selectedTransport == 2}" (click)="setSelectedTransport(2)">
-      <img src="assets/image2.png"> 
+      <img [src]="sourceTransport2"/>    
     </div>
 
     <div class="card" [ngClass]="{'active': selectedTransport == 3}" (click)="setSelectedTransport(3)">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
+      <img [src]="sourceTransport3"/>    
+    </div>
 
-      <span>test oui pas image</span>
+    <div class="card" [ngClass]="{'active': selectedTransport == 4}" (click)="setSelectedTransport(4)">
+      <img [src]="sourceTransport4"/>    
+    </div>
 
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    <div class="card" [ngClass]="{'active': selectedTransport == 5}" (click)="setSelectedTransport(5)">
+      <img [src]="sourceTransport5"/>    
+    </div>
+
+    <div class="card" [ngClass]="{'active': selectedTransport == 6}" (click)="setSelectedTransport(6)">
+      <img [src]="sourceTransport6"/>    
+    </div>
+
+    <div class="card" [ngClass]="{'active': selectedTransport == 7}" (click)="setSelectedTransport(7)">
+      <img [src]="sourceTransport7"/>    
     </div>
 
 
@@ -42,45 +46,50 @@
 
   <div class="card-container middle">
     
-    <h2>Résulat</h2>
-    <p>Ci-dessous le résulat de la combinaison du transport et de l'énergie choisies</p>
+    <h2>Résultat</h2>
+    <p>Ci-dessous le résulat de la combinaison du transport et de l'énergie.</p>
 
     <!-- Résultat -->
-  <div class="card">
-    <img [src]="sourceRes"/>
-</div>
+    <div class="card result">
+      <img [src]="sourceRes"/>
+    </div>
+
+    <div class="card reset"  (click)="reset()">
+      <img [src]="resetImg"/>
+    </div>
 
   </div>
 
   <div class="card-container right">
 
     <!-- Energies -->
-    <h2>Energies</h2>
-    <p>Cliquer sur une énergie</p>
-
-    <input type="hidden" #selection>
+    <h2>Énergies</h2>
+    <p>Cliquer sur une énergie pour la sélectionner.</p>
     
-    <div class="card " (click)="selection.value = 'component'" tabindex="0" [ngClass]="{'active': selectedEnergie == 1}" (click)="setSelectedEnergie(1)">
-      <img [src]="source3"/>
+    <div class="card " [ngClass]="{'active': selectedEnergie == 1}" (click)="setSelectedEnergie(1)">
+      <img [src]="sourceEnergie1"/>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'material'" tabindex="0" [ngClass]="{'active': selectedEnergie == 2}" (click)="setSelectedEnergie(2)">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>Angular Material</span>
+    <div class="card " [ngClass]="{'active': selectedEnergie == 2}" (click)="setSelectedEnergie(2)">
+      <img [src]="sourceEnergie2"/>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'pwa'" tabindex="0" [ngClass]="{'active': selectedEnergie == 3}" (click)="setSelectedEnergie(3)">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>Add PWA Support</span>
+    <div class="card " [ngClass]="{'active': selectedEnergie == 3}" (click)="setSelectedEnergie(3)">
+      <img [src]="sourceEnergie3"/>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'dependency'" tabindex="0" [ngClass]="{'active': selectedEnergie == 4}" (click)="setSelectedEnergie(4)">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>Add Dependency</span>
+    <div class="card " [ngClass]="{'active': selectedEnergie == 4}" (click)="setSelectedEnergie(4)">
+      <img [src]="sourceEnergie4"/>
     </div>
+
+    <div class="card " [ngClass]="{'active': selectedEnergie == 5}" (click)="setSelectedEnergie(5)">
+      <img [src]="sourceEnergie5"/>
+    </div>
+
+    <div class="card " [ngClass]="{'active': selectedEnergie == 6}" (click)="setSelectedEnergie(6)">
+      <img [src]="sourceEnergie6"/>
+    </div>
+    
   </div>
 
   <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
